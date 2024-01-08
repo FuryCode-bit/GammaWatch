@@ -1,12 +1,33 @@
-CREATE PROCEDURE InsertRadiationReading(
+CREATE PROCEDURE [dbo].[InsertRadiationReading](
     @received_value DECIMAL(10, 2), -- Assuming the received value is of type DECIMAL
     @reading_date varchar(20),
     @reading_time varchar(20),
-    @radiation_level int(1)
+	@IDE int
 )
 AS
 BEGIN
     DECLARE @sensor_IDS INT;
+    DECLARE @nivel_radiacao INT;
+
+    DECLARE @value_in_mSv FLOAT;
+    SET @value_in_mSv = @received_value / 1000000.0;
+
+    IF @value_in_mSv >= 6000
+        SET @nivel_radiacao = 8;
+    ELSE IF @value_in_mSv >= 3000 AND @value_in_mSv < 6000
+        SET @nivel_radiacao = 7;
+    ELSE IF @value_in_mSv >= 1000 AND @value_in_mSv < 3000
+        SET @nivel_radiacao = 6;
+    ELSE IF @value_in_mSv >= 700 AND @value_in_mSv < 1000
+        SET @nivel_radiacao = 5;
+    ELSE IF @value_in_mSv >= 250 AND @value_in_mSv < 700
+        SET @nivel_radiacao = 4;
+    ELSE IF @value_in_mSv >= 100 AND @value_in_mSv < 250
+        SET @nivel_radiacao = 3;
+    ELSE IF @value_in_mSv >= 10 AND @value_in_mSv < 100
+        SET @nivel_radiacao = 2;
+    ELSE IF @value_in_mSv >= 0 AND @value_in_mSv < 10
+        SET @nivel_radiacao = 1;
 
     -- Find IDTS for the interval the reading falls into
     DECLARE @IDTS INT;
@@ -25,7 +46,8 @@ BEGIN
         BEGIN
             -- Insert Leitura with discovered IDS
             INSERT INTO Leitura (IDS, IDE, dia, hora, valor, IDNR)
-            VALUES (@sensor_IDS, @IDTS, @reading_date, @reading_time, @received_value, @radiation_level);
+            VALUES (@sensor_IDS, @IDE, @reading_date, @reading_time, @received_value, @nivel_radiacao);
+
         END
         ELSE
         BEGIN
