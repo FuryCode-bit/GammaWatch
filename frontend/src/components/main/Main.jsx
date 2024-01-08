@@ -105,7 +105,7 @@ function MainComponent() {
                     <img src={Ist} alt="Image" style={{height: '200px', overflow: 'hidden', objectFit :"cover"}}/>
                 </Col>
             </Row>
-            <Row style={{backgroundColor: "#00A499", justifyContent: "center", paddingTop: "30px" , paddingBottom: "30px"}}>
+            {/* <Row style={{backgroundColor: "#00A499", justifyContent: "center", paddingTop: "30px" , paddingBottom: "30px"}}>
                 <Col sm="12" md="4" lg="4" style={{display: "flex", justifyContent: "center"}}>
                     <img src={Radiacao1} alt="Image" style={{width: '200px', height: '200px', borderRadius: '50%', overflow: 'hidden', objectFit :"cover"}}/>
                 </Col>
@@ -115,7 +115,7 @@ function MainComponent() {
                 <Col sm="12" md="4" lg="4" style={{display: "flex", justifyContent: "center"}}>
                     <img src={Radiacao3} alt="Image" style={{width: '200px', height: '200px', borderRadius: '50%', overflow: 'hidden', objectFit :"cover"}}/>
                 </Col>
-            </Row>
+            </Row> */}
         </Container>
     </>
   )

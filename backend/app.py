@@ -122,10 +122,10 @@ def get_alertas_estacao():
         # Query para buscar informações dos sensores associados à estação
         query = """
             SELECT L.IDS, L.valor, A.hora, A.dia, L.IDNR, STRING_AGG(Ac.descricao_accao, ', ') AS descricao_accao_list
-            FROM [gammawatch].[dbo].[Leitura] AS L
-            INNER JOIN [gammawatch].[dbo].[Alerta] AS A ON L.IDS = A.IDS AND L.IDE = A.IDE AND L.dia = A.dia AND L.hora = A.hora
-            INNER JOIN [gammawatch].[dbo].[AcoesTomar] AS Act ON A.IDNA = Act.IDNA
-            INNER JOIN [gammawatch].[dbo].[Accao] AS Ac ON Act.IDA = Ac.IDA
+            FROM Leitura AS L
+            INNER JOIN Alerta AS A ON L.IDS = A.IDS AND L.IDE = A.IDE AND L.dia = A.dia AND L.hora = A.hora
+            INNER JOIN AcoesTomar AS Act ON A.IDNA = Act.IDNA
+            INNER JOIN Accao AS Ac ON Act.IDA = Ac.IDA
             WHERE A.IDE = ?
             GROUP BY L.valor, A.hora, A.dia, L.IDNR, L.IDS;
         """

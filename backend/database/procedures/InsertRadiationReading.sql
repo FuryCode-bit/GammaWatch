@@ -1,5 +1,5 @@
 CREATE PROCEDURE [dbo].[InsertRadiationReading](
-    @received_value DECIMAL(10, 2), -- Assuming the received value is of type DECIMAL
+    @received_value DECIMAL(30, 2), -- Assuming the received value is of type DECIMAL
     @reading_date varchar(20),
     @reading_time varchar(20),
 	@IDE int

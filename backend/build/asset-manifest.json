@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.f855e6bc.css",
-    "main.js": "/static/js/main.db0076a2.js",
+    "main.js": "/static/js/main.b5df34e8.js",
     "static/js/787.9e9f4ffd.chunk.js": "/static/js/787.9e9f4ffd.chunk.js",
     "static/media/Faro.jpg": "/static/media/Faro.55cea9a5f4ca0deff142.jpg",
     "static/media/Fratel.jpg": "/static/media/Fratel.3cd4ca513e23e2776633.jpg",
@@ -33,11 +33,11 @@
     "static/media/PontaDelgada.jpg": "/static/media/PontaDelgada.6f530a1de19e351d4414.jpg",
     "index.html": "/index.html",
     "main.f855e6bc.css.map": "/static/css/main.f855e6bc.css.map",
-    "main.db0076a2.js.map": "/static/js/main.db0076a2.js.map",
+    "main.b5df34e8.js.map": "/static/js/main.b5df34e8.js.map",
     "787.9e9f4ffd.chunk.js.map": "/static/js/787.9e9f4ffd.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f855e6bc.css",
-    "static/js/main.db0076a2.js"
+    "static/js/main.b5df34e8.js"
   ]
 }
