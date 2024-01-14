@@ -115,18 +115,12 @@ function EstacaoComponent({ teste, estacoes }) {
         
         setLeituras(response.data);
     
-        // Assuming leituras is an array of objects containing 'dia', 'valor', and 'IDNR' properties
         const leiturasData = response.data;
 
         const groupedData = leiturasData.reduce((result, currentValue) => {
           (result[currentValue.dia] = result[currentValue.dia] || []).push(currentValue);
           return result;
         }, {});
-        
-        console.log("groupedData: ", groupedData)
-
-        // setFirstReadingDate(groupedData[0].dia)
-        // setLastReadingDate(groupedData[groupedData.length - 1].dia)
 
         const result = [];
         
@@ -184,22 +178,20 @@ function EstacaoComponent({ teste, estacoes }) {
     async function getSensors() {
       try {
         const response = await api.post('/sensoresEstacao', { id: estacoes[estacaoCounter] });
-        console.log("Sensores: ", response.data)
-        setSensoresLista(response.data); // Assuming the data is returned as an array of sensor objects
+        setSensoresLista(response.data);
       } catch (error) {
         console.error('Error retrieving sensors from the station:', error);
-        return []; // Return an empty array or handle the error accordingly
+        return [];
       }
     }
 
     async function getAlerts() {
       try {
         const response = await api.post('/alertasEstacao', { id: estacoes[estacaoCounter] });
-        console.log("Alertas: ", response.data)
-        setAlertasLista(response.data); // Assuming the data is returned as an array of sensor objects
+        setAlertasLista(response.data);
       } catch (error) {
         console.error('Error retrieving sensors from the station:', error);
-        return []; // Return an empty array or handle the error accordingly
+        return []; 
       }
     }
 

@@ -23,9 +23,7 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Main />} />
           <Route exact path="/sobre" element={<Info />} />
-          <Route exact path="/estacao" element={<Estacao />} />
-          <Route exact path="/sensor/:ide/:ids" element={<Sensor />} />
-        
+          <Route exact path="/estacao" element={<Estacao />} />        
         </Routes>
       </BrowserRouter>
   </Container>

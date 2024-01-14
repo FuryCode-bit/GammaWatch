@@ -18,17 +18,17 @@ def hello_world2():
 @app.route("/estacoes")
 @cross_origin(origin='*',headers=['Content-Type'])
 def main():
-    resultado = []
+    result = []
     conn = database_connection()
     cursor = conn.cursor()
     cursor.execute("SELECT * FROM dbo.Estacao")
     columns = [column[0] for column in cursor.description]
     
     for row in cursor.fetchall():
-        resultado.append(dict(zip(columns, row)))
+        result.append(dict(zip(columns, row)))
 
     conn.close()
-    return jsonify(resultado)
+    return jsonify(result)
 
 @app.route("/estacaoById", methods=['GET', 'POST'])
 @cross_origin(origin='*',headers=['Content-Type'])
@@ -90,7 +90,6 @@ def get_sensores_estacao():
         conn = database_connection()
         cursor = conn.cursor()
 
-        # Query para buscar informações dos sensores associados à estação
         query = """
         SELECT S.IDE, S.IDS, TS.modelo, TS.max_sensibilidade, TS.min_sensibilidade,
                TS.max_gama_radiacao, TS.min_gama_radiacao, FL.frequencia
@@ -119,7 +118,6 @@ def get_alertas_estacao():
         conn = database_connection()
         cursor = conn.cursor()
 
-        # Query para buscar informações dos sensores associados à estação
         query = """
             SELECT L.IDS, L.valor, A.hora, A.dia, L.IDNR, STRING_AGG(Ac.descricao_accao, ', ') AS descricao_accao_list
             FROM Leitura AS L
