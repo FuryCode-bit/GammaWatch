@@ -1,37 +1,225 @@
-# Projeto Base de Dados 2023/2024
+<!-- Project GammaWatch: https://github.com/FuryCode-bit/GammaWatch -->
+<a name="readme-top"></a>
 
-## Objetivos e Competências
+[![Contributors][contributors-shield]][contributors-url]
+[![Stargazers][stars-shield]][stars-url]
+[![MIT License][license-shield]][license-url]
+[![LinkedIn][linkedin-shield]][linkedin-url]
 
-**Objetivos**: preparar os estudantes para entender, projetar e desenvolver soluções informáticas sobre bases de 
-dados. 
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+  <a href="https://github.com/FuryCode-bit/GammaWatch">
+    <img src="readme/fe.png" alt="Logo" height="80">
+  </a>
 
-**Competências**: desenvolver modelos de dados; produzir esquema relacional; desenvolver aplicações 
-multiutilizador sobre bases de dados cliente/servidor. 
+  <h3 align="center">GammaWatch</h3>
 
-## Contexto
-A rede RADNET Portugal (https://radnet.apambiente.pt/ ) surgiu como a resposta nacional ao acidente de 
-Chernobyl. Este acidente nuclear ocorreu a 26 de abril de 1986 na Ucrânia e libertou material radioativo para a atmosfera que afetou vários países europeus. A RADNET faz parte da rede europeia de monitorização da 
-radioatividade e efetua em contínuo a monitorização da radioatividade ambiente. funciona também como 
-sistema de alerta em caso de acidente nuclear ou emergência radiológica. Existem riscos radiológicos que podem afetar Portugal. Por exemplo, derivados das escórias das minas de urânio na Urgeiriça, do Reator Nuclear Português no Campus Tecnológico e Nuclear (CTN) do Instituto Superior Técnico (https://tecnico.ulisboa.pt/pt/sobre-o-tecnico/campi/tecnologico-e-nuclear/), riscos de incidentes em navios ancorados em portos nacionais ou em transito que tenham propulsão nuclear, lixo radioativo ou armas nucleares, mas também, riscos mais elevados derivados das centrais nucleares espanholas onde há 7 reatores nucleares ativos em 5 centrais. 
+  <p align="center"> Monitoring Radiation in the Portuguese Environment
+    <br />
+    <a href="https://github.com/FuryCode-bit/GammaWatch"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    <!-- <a href="https://github.com/FuryCode-bit/GammaWatch">View Demo</a> -->
+    ·
+    <a href="https://github.com/FuryCode-bit/GammaWatch/issues">Report Bug</a>
+    <!-- ·
+    <a href="https://github.com/FuryCode-bit/GammaWatch/issues">Request Feature</a> -->
+  </p>
+</div>
 
-No passado já ocorreram diversos acidentes, um dos quais com libertação de radioatividade para o Tejo na 
-central nuclear de Almaraz. Esta devia já ter sido encerrada por ter atingido o seu fim de vida útil, mas este foi recentemente aumentado para mais 20 anos e a posterior conversão do local num aterro de resíduos 
-nucleares. No passado já houve tentativas de criar um aterro nuclear junto à fronteira nacional no norte perto fronteira do distrito de Bragança, no Douro e agora no Tejo junto à central de Almaraz, todos estes riscos constituem um perigo latente de poluição, que pode afetar a qualidade de vida, saúde e a economia nacional durante muitas gerações caso ocorra algum acidente grave. A exposição a radiação é medida em Sv (Sievert). Na tabela 1 mostramos uma relação entre a exposição e os efeitos produzidos. Relativamente aos riscos, a Agência Internacional da Energia Atómica (IAEA International Atomic Energy Agency) classifica os riscos em três tipos principais: acidentes, incidentes e desvios de acordo com a informação na Fig. 1 As estações de vigilância portuguesas da rede RADNET estão implantadas estrategicamente junto à fronteira e nos principais núcleos populacionais e industriais. A localização das estações é a seguinte: Abrantes, Beja, Bragança, Castelo Branco, Coimbra, Elvas, Évora, Faro, Fratel (estação submersa no Tejo junto à fronteira), Funchal, Junqueira, Juromenha (estação junto ao Guadiana), Lisboa, Meimoa (na fronteira a 100 km da central nuclear de Almaraz com dois reatores ativos), Penhas Douradas, Pocinho (estação submersa no Douro junto à fronteira), Ponta Delgada, Portalegre, Porto e Sines e uma estação na base aérea de Talavera La Real em Badajoz (Espanha).
 
-## Descrição do trabalho
-Pretende-se implementar um sistema de informação semelhante ao da RADNET portuguesa composto por 
-uma base de dados e uma aplicação que permita interagir com o sistema desenvolvido. Para esse fim cada 
-estação da rede possui ou pode possuir vários tipos de sensores de radiação no ar, na água e no solo. As 
-estações podem ser permanentes (fixas) ou móveis e serem capazes de detetar radiação em várias gamas. 
-Para cada estação deve ser indicada a sua localização e características. Nomeadamente, a data da instalação, o tipo e quantidade de sensores que possui e frequência de leituras. A unidade de medida mais utilizada para 
-classificar o nível de radiação é o Sievert (Sv), na prática é usado o mSv como unidade de medida que 
-corresponde a 0,001 Sv. Cada sensor tem um limite máximo e mínimo de sensibilidade. Pelo que, em algumas 
-estações há sensores com diferentes graus de sensibilidade para procurar cobrir vários espectros de radiação. 
-Todas as estações registam o nível de radiação em Sievert (Sv) com frequências distintas: à hora, ao minuto, 
-ao segundo e possuem também valores de referência diários, mensais e anuais. É necessário que a base de 
-dados mostre em tempo real as leituras nos diversos pontos da rede, permita também o acesso a dados 
-históricos e que possa ativar e gerir alertas no caso dos valores ultrapassassem valores pré-definidos e ou de referência. Os níveis de alerta devem estar associados a uma gama de valores de radiação.
-Cada estação fixa está equipada com pelo menos dois sensores/detetores Geiger-Müller, um para baixos 
-níveis de radiação (de 10 nSv/h a 2 mSv/h) e outro para valores elevados (de 0,1 mSv/h a 10 Sv/h). É necessário registar também leituras com de estações móveis e de equipamentos portáteis que podem ser utilizadas em locais específicos durante vários períodos. Por exemplo, efetuar leituras nas minas da Urgeiriça durante 3 semanas. Com base nos valores detetados deve ser possível gerar alertas. Por exemplo, se for detetado numa estação um valor 10% acima do valor médio anual, deve ser acionado um alarme e participada a situação à Agência Portuguesa do Ambiente e à Autoridade Nacional de Proteção Civil, se o valor detetado tem impacto direto na saúde o alerta deve incluir avisos diretos à população, por exemplo sirenes, altifalantes, SMS, chamadas telefónicas, TV, rádio, internet, email. Deve também ser criada uma escala de valores admissíveis baseado na informação já existente e disponível 
-para download das estações da rede RADNET.
 
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#acknowledgments">Acknowledgments</a></li>
+  </ol>
+</details>
+
+
+
+<!-- ABOUT THE PROJECT -->
+## About The Project
+
+[![Product Name Screen Shot][product-screenshot]](https://example.com)
+
+### Objectives and goals
+
+**Objectives**: Prepare students to understand, design, and develop computer solutions based on databases.
+
+**Goals**: Develop data models; produce relational schema; develop multi-user applications on client/server databases.
+
+### Context
+The RADNET Portugal network (https://radnet.apambiente.pt/) emerged as the national response to the Chernobyl accident. This nuclear accident occurred on April 26, 1986, in Ukraine, releasing radioactive material into the atmosphere that affected several European countries. RADNET is part of the European network for monitoring radioactivity and continuously monitors environmental radioactivity. It also serves as an alert system in case of nuclear accidents or radiological emergencies. There are radiological risks that can affect Portugal, such as those from uranium mine residues in Urgeiriça, the Portuguese Nuclear Reactor at the Technological and Nuclear Campus (CTN) of the Instituto Superior Técnico (https://tecnico.ulisboa.pt/pt/sobre-o-tecnico/campi/tecnologico-e-nuclear/), risks of incidents involving ships with nuclear propulsion in national ports or transit, radioactive waste, or nuclear weapons. Additionally, there are higher risks from Spanish nuclear power plants with seven active reactors in five facilities.
+
+Several accidents have occurred in the past, including one with the release of radioactivity into the Tejo River at the Almaraz nuclear power plant. Although it should have been closed due to reaching the end of its useful life, it was recently extended for another 20 years with the subsequent conversion of the site into a nuclear waste landfill. Attempts have been made in the past to create a nuclear landfill near the national border in the north near the Bragança district, in the Douro, and now in the Tejo River near the Almaraz power plant. All these risks constitute a latent danger of pollution, which can affect the quality of life, health, and the national economy for many generations if a severe accident occurs. Radiation exposure is measured in Sv (Sievert). In Table 1, we show a relationship between exposure and the produced effects. Regarding risks, the International Atomic Energy Agency (IAEA) classifies risks into three main types: accidents, incidents, and deviations, according to the information in Fig. 1. Portuguese RADNET surveillance stations are strategically located near the border and in major population and industrial centers. The station locations are as follows: Abrantes, Beja, Bragança, Castelo Branco, Coimbra, Elvas, Évora, Faro, Fratel (submerged station in the Tejo River near the border), Funchal, Junqueira, Juromenha (station near the Guadiana River), Lisbon, Meimoa (on the border 100 km from the Almaraz nuclear power plant with two active reactors), Penhas Douradas, Pocinho (submerged station in the Douro River near the border), Ponta Delgada, Portalegre, Porto, Sines, and a station at the Talavera La Real airbase in Badajoz (Spain).
+
+### Goal
+The goal is to implement an information system similar to the Portuguese RADNET, consisting of a database and an application that allows interaction with the developed system. For this purpose, each network station has or can have various types of radiation sensors in the air, water, and soil. Stations can be permanent (fixed) or mobile and capable of detecting radiation in various ranges. For each station, its location and characteristics should be indicated. Specifically, the installation date, type and quantity of sensors, and frequency of readings. The most commonly used unit of measurement to classify radiation levels is the Sievert (Sv), and in practice, the mSv is used as a unit of measurement corresponding to 0.001 Sv. Each sensor has a maximum and minimum sensitivity limit. Therefore, in some stations, there are sensors with different sensitivity levels to cover various radiation spectra. All stations record radiation levels in Sievert (Sv) at different frequencies: hourly, per minute, per second, and also have daily, monthly, and annual reference values. It is necessary for the database to display real-time readings at various points on the network, allow access to historical data, and be able to activate and manage alerts if values exceed predefined and/or reference values. Alert levels should be associated with a range of radiation values. Each fixed station is equipped with at least two Geiger-Müller sensors/detectors, one for low radiation levels (from 10 nSv/h to 2 mSv/h) and another for high values (from 0.1 mSv/h to 10 Sv/h). Readings from mobile stations and portable equipment that can be used in specific locations for various periods also need to be recorded. For example, taking readings in the Urgeiriça mines for 3 weeks. Based on detected values, it should be possible to generate alerts. For example, if a station detects a value 10% above the annual average, an alarm should be triggered, and the situation reported to the Portuguese Environmental Agency and the National Civil Protection Authority. If the detected value has a direct impact on health, the alert should include direct warnings to the population, such as sirens, loudspeakers, SMS, phone calls, TV, radio, internet, email. An acceptable range of values should also be created based on existing and available information for downloading from RADNET network stations.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
+### Built With
+
+This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
+
+<!-- * [![Next][Next.js]][Next-url] -->
+* [![React][React.js]][React-url]
+<!-- * [![Vue][Vue.js]][Vue-url] -->
+<!-- * [![Angular][Angular.io]][Angular-url]
+* [![Svelte][Svelte.dev]][Svelte-url]
+* [![Laravel][Laravel.com]][Laravel-url] -->
+* [![Bootstrap][Bootstrap.com]][Bootstrap-url]
+* [![Flask][flask]][Flask-url]
+<!-- * [![JQuery][JQuery.com]][JQuery-url] -->
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
+<!-- GETTING STARTED -->
+## Getting Started
+
+### Prerequisites
+
+Before starting the application, it's necessary to:
+
+1. Obtain the data needed for display from the official [**Radnet website**](https://radnet.apambiente.pt/) and save the resulting CSV file as **Valores.csv**.
+
+2. Get a free API Key from [Api-Ninjas](https://api-ninjas.com/)
+
+### Installation
+
+1. Clone the repo
+   ```sh
+   git clone https://github.com/FuryCode-bit/GammaWatch.git
+   ```
+
+2. Enter your API in `config.py` and generate the data
+   ```python
+   API_KEY = 'YOUR_API_KEY'
+   ```
+   ```sh
+   cd backend
+   python3 getData.py
+   ```
+
+
+3. Import database script to your sql server
+   ```sh
+   cd backend/database/script.sql
+   ```
+
+4. Insert the all procedures, triggers and the data generated earlier
+   ```sh
+   cd backend/database/insertData.sql
+   ```
+
+5. Install NPM packages
+      ```sh
+   cd frontend
+   npm install
+   ```
+
+6. Install Python packages
+      ```sh
+   cd backend
+   pip3 install -r requirements.txt
+   ```
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- Issues -->
+## Issues
+
+See the [open issues](https://github.com/FuryCode-bit/GammaWatch/issues) for a full list of proposed features (and known issues).
+
+<!-- CONTRIBUTING -->
+## Contributing
+
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
+Don't forget to give the project a star! Thanks again!
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
+<!-- LICENSE -->
+## License
+
+Distributed under the MIT License. See `LICENSE.txt` for more information.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
+<!-- CONTACT -->
+## Contact
+
+Project Link: [https://github.com/FuryCode-bit/GammaWatch](https://github.com/FuryCode-bit/GammaWatch)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- MARKDOWN LINKS & IMAGES -->
+
+[contributors-shield]: https://img.shields.io/github/contributors/FuryCode-bit/GammaWatch.svg?style=for-the-badge
+[contributors-url]: https://github.com/FuryCode-bit/GammaWatch/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/FuryCode-bit/GammaWatch.svg?style=for-the-badge
+[forks-url]: https://github.com/FuryCode-bit/GammaWatch/network/members
+[stars-shield]: https://img.shields.io/github/stars/FuryCode-bit/GammaWatch.svg?style=for-the-badge
+[stars-url]: https://github.com/FuryCode-bit/GammaWatch/stargazers
+[issues-shield]: https://img.shields.io/github/issues/FuryCode-bit/GammaWatch.svg?style=for-the-badge
+[issues-url]: https://github.com/FuryCode-bit/GammaWatch/issues
+[license-shield]: https://img.shields.io/github/license/FuryCode-bit/GammaWatch.svg?style=for-the-badge
+[license-url]: https://github.com/FuryCode-bit/GammaWatch/blob/master/LICENSE.txt
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-url]: https://linkedin.com/in/bernardeswebdev
+[product-screenshot]: readme/estacao.png
+[Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
+[Next-url]: https://nextjs.org/
+[React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
+[React-url]: https://reactjs.org/
+[Vue.js]: https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D
+[Vue-url]: https://vuejs.org/
+[Angular.io]: https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white
+[Angular-url]: https://angular.io/
+[Svelte.dev]: https://img.shields.io/badge/Svelte-4A4A55?style=for-the-badge&logo=svelte&logoColor=FF3E00
+[Svelte-url]: https://svelte.dev/
+[Laravel.com]: https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white
+[Laravel-url]: https://laravel.com
+[Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
+[Bootstrap-url]: https://getbootstrap.com
+[flask]: https://img.shields.io/badge/flask-0769AD?style=for-the-badge&logo=flask&logoColor=white
+[Flask-url]: https://flask.palletsprojects.com/en/3.0.x/
+[JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
+[JQuery-url]: https://jquery.com 

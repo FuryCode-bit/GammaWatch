@@ -1,11 +1,12 @@
 import csv
-import requests 
+import requests
+from config import API_KEY
 
 def getCoordinates(city):
 
     api_url = 'https://api.api-ninjas.com/v1/geocoding?city={}'.format(city)
     params = {'city': city, 'country': "PT", 'limit': '1'}
-    headers = {'X-Api-Key': 'xxxxxxxxxxxxxxxxxxx'}
+    headers = {'X-Api-Key': API_KEY}
     response = requests.get(api_url, params=params, headers=headers)    
 
     latitude = 0.0
@@ -71,9 +72,9 @@ def generate_sql_inserts(csv_file):
                 sql_script += f"EXEC InsertRadiationReading {value}, '{date}', '{time}', {idx};\n"
     return sql_script
 
+#Insert csv files in here
 meses = [
-    "ValoresTP_Janeiro", "ValoresTP_Fevereiro", "ValoresTP_Marco", "ValoresTP_Abril", "ValoresTP_Maio", "ValoresTP_Junho",
-    "ValoresTP_Julho", "ValoresTP_Agosto", "ValoresTP_Setembro", "ValoresTP_Outubro", "ValoresTP_Novembro", "ValoresTP_Dezembro"
+    "ValoresTP",
 ]
 
 # Generate .sql files for every element in the list
