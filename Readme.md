@@ -79,9 +79,6 @@ The goal is to implement an information system similar to the Portuguese RADNET,
 
 ### Built With
 
-This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
-
-
 * [![React][React.js]][React-url]
 * [![Bootstrap][Bootstrap.com]][Bootstrap-url]
 * [![Flask][flask]][Flask-url]
